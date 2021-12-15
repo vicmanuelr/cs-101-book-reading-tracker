@@ -1,5 +1,13 @@
 import datetime as dt
 
+LOGO = '''
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+██░▄▄▀█▀▄▄▀█▀▄▄▀█░█▀████░▄▄▀█░▄▄█░▄▄▀█░▄▀██▄██░▄▄▀█░▄▄▄███▄▄░▄▄█░▄▄▀█░▄▄▀█▀▄▀█░█▀█░▄▄█░▄▄▀
+██░▄▄▀█░██░█░██░█░▄▀████░▀▀▄█░▄▄█░▀▀░█░█░██░▄█░██░█░█▄▀█████░███░▀▀▄█░▀▀░█░█▀█░▄▀█░▄▄█░▀▀▄
+██░▀▀░██▄▄███▄▄██▄█▄████░██░█▄▄▄█▄██▄█▄▄██▄▄▄█▄██▄█▄▄▄▄█████░███▄█▄▄█▄██▄██▄██▄█▄█▄▄▄█▄█▄▄
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+'''
+
 # TODO 1: USERNAME AND FILE SETUP FOR DATABASE AND KEEP TRACK OF BOOK READING
 USERSDB = {"victor": {"first_name": "Victor", "last_name": "Ponce", "books_per_year": 10, "pages_history": [],
                       "consecutive_days": 0}}
@@ -71,6 +79,11 @@ def daily_reading(user):
 
 # TODO 4: STATISTICS (%READ OF THE BOOK, GOAL PROGRESS, HOW MANY BOOKS/PAGES READ, PAGES/MIN)
 def statistics_check(user):
+    """
+    Check goal agains pages read by user.
+    :param user: username key in USERDB
+    :return: Amount of pages read agains goal String.
+    """
     global USERSDB
     pages_left = 10 * 230 - sum(USERSDB[user]["pages_history"])
     time_check = (USERSDB[user]["start_date"] - dt.date.today()).days
@@ -83,6 +96,7 @@ def statistics_check(user):
 # TODO 5: Application brain
 user_logged = True
 while user_logged:
+    print(LOGO)
     user = username_setup()
     daily_reading(user)
     user_logged = False
